@@ -47,7 +47,7 @@ def short_url(longurl):
             disable_warnings()
             return cget(f'http://cutt.ly/api/api.php?key={SHORTENER_API}&short={longurl}', verify=False).json()['url']['shortLink']
         else:
-            return cget(f'https://{SHORTENER}/api?api={SHORTENER_API}&url={quote(longurl)}').text
+            return cget(f'https://{SHORTENER}/api?api={SHORTENER_API}&url={quote(longurl)}&format=text').text
     except Exception as e:
         LOGGER.error(e)
         return longurl
